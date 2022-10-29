@@ -56,7 +56,7 @@ public class one extends Main {
         }
         void exit()
         {
-            System.out.println("Thank Bye");
+            System.out.println("Thanks Bye");
             System.exit(1);
         }
     }
