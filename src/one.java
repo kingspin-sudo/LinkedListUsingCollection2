@@ -1,63 +1,43 @@
 import java.util.LinkedList;
 import java.util.Scanner;
-public class one extends Main {
-    Main obj = new Main();
+public class one{
     Scanner input = new Scanner(System.in);
-    private int number;
-    private String s;
-    private int d;
-    private int n;
+    int number = 0;
     LinkedList<Integer> list = new LinkedList<>();
-
     void message() {
-        System.out.println("Enter Your values between 1-50");
+        System.out.println("Note: Enter Your values one by one between 1-50 \n >>> Press any non-number or character to end the inputs");
         number = input.nextInt();
         check();
+        delete();
+        exit();
     }
-
     void check() {
-        if (this.number < 51) {
-            list.add(number);
-            System.out.println("Wanna add More ? y for yes /n for no");
-            s = input.next();
-            condition();
-        } else {
-            System.out.println("You exceeded the limit . Please Try again :");
-//            message();
-        }
+        while(number < 51) {
+            if (input.hasNextInt()) {
+                list.add(number);
+                number = input.nextInt();
+            } else {
+                break;
+            }}
+        System.out.println("List : " + list);
+        System.out.println("Size of List : " + list.size());
     }
-
-    void condition() {
-        if (s.equals("y") | s.equals("Y")) {
-            message();
-            check();
-        } else {
-            System.out.println("List : " + list);
-            System.out.println("Size of your list : " + list.size());
-            System.out.println("Delete nodes Greater than : ");
-            delete();
+    void delete() {
+        System.out.println("Delete nodes Greater than the value : ");
+        Scanner sc = new Scanner(System.in);
+        int d = sc.nextInt();
+        int n=0;
+        while(n < list.size()) {
+            if(list.get(n) > d) {
+                list.remove(n);
+                n--;
+            }n++;
         }
-
-
+        System.out.println("Final Linked List: " + list);
     }
-
-        void delete()
-        {
-            Scanner sc = new Scanner(System.in);
-            d = sc.nextInt();
-            System.out.println(list);
-                for (n = 0; n < list.size(); n++)
-                    {
-                        if (list.get(n) > d)
-                            list.remove(n);
-                    }
-            System.out.println(list);
-                exit();
-        }
         void exit()
         {
             System.out.println("Thanks Bye");
             System.exit(1);
         }
-    }
-
+}
